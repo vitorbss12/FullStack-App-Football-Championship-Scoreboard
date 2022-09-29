@@ -31,7 +31,7 @@ export default class loginValidation {
     const user = await LoginService.findByEmail(email);
 
     if (!user || !Bcrypt.compare(password, user.password)) {
-      throw new HttpException(401, 'Username or password invalid');
+      throw new HttpException(401, 'Incorrect email or password');
     }
 
     req.user = user;
