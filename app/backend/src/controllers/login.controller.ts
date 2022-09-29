@@ -11,4 +11,10 @@ export default class LoginController {
 
     return res.status(200).json({ token });
   };
+
+  static loginValidate = async (req: RequestUser, res: Response) => {
+    const { role } = req;
+
+    return res.status(200).json({ role });
+  };
 }
