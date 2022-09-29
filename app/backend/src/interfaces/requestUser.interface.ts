@@ -3,4 +3,5 @@ import IUser from './user.interface';
 
 export default interface RequestUser extends Request {
   user?: IUser;
+  role?: string;
 }
