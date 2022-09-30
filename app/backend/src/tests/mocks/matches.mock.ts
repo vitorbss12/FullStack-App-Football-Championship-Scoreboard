@@ -90,3 +90,23 @@ export const notInProgressMatchesMock = [
     }
   }
 ]
+
+export const createMatchMockOk = {
+  homeTeam: 16,
+  awayTeam: 8,
+  homeTeamGoals: 2,
+  awayTeamGoals: 2,
+}
+
+export const createMatchMockInvalid = {
+  awayTeam: 8,
+  homeTeamGoals: 2,
+  awayTeamGoals: 2,
+}
+
+export const createMatchMockInvalidEqualTeams = {
+  homeTeam: 5,
+  awayTeam: 5,
+  homeTeamGoals: 2,
+  awayTeamGoals: 2,
+}
