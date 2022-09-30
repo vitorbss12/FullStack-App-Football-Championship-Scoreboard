@@ -68,7 +68,7 @@ describe('/teams', () => {
 
     it('Deve retornar todas as equipes', async () => {
       const response = await chai.request(app).get('/teams/1');
-      expect(response.status).to.be.equal(500);
+      expect(response.status).to.be.equal(404);
       chai.expect(response.body).to.deep.equal({ message: 'Team not found' });
     });
   });
