@@ -42,8 +42,8 @@ describe('/login/validate', () => {
   describe('Falha - Token incorreto', () => {
     it('Deve retornar erro caso o email seja inválido', async () => {
       const response = await chai.request(app).get('/login/validate').set('authorization', invalidToken);
-      expect(response.status).to.be.equal(500);
-      chai.expect(response.body).to.deep.equal({ 'message': 'invalid token' });
+      expect(response.status).to.be.equal(401);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Token must be a valid token' });
     });
   });
   describe('Falha - Token não informado', () => {
