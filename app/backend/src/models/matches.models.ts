@@ -21,4 +21,24 @@ export default class MatchModel {
       },
     );
   }
+
+  static async findAllInProgress(inProgress: number): Promise<IMatch[]> {
+    return Matches.findAll(
+      {
+        where: { inProgress },
+        include: [
+          {
+            model: Teams,
+            as: 'teamHome',
+            attributes: ['teamName'],
+          },
+          {
+            model: Teams,
+            as: 'teamAway',
+            attributes: ['teamName'],
+          },
+        ],
+      },
+    );
+  }
 }
