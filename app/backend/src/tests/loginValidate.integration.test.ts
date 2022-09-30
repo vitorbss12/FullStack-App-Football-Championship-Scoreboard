@@ -3,8 +3,8 @@ import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
-import { app } from '../../app';
-import User from '../../database/models/User';
+import { app } from '../app';
+import User from '../database/models/User';
 
 import { Response } from 'superagent';
 
