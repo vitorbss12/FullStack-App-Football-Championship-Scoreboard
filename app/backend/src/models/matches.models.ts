@@ -4,7 +4,7 @@ import IMatch from '../interfaces/matches.interface';
 
 export default class MatchModel {
   static async findAll(): Promise<IMatch[]> {
-    const matches = await Matches.findAll(
+    return Matches.findAll(
       {
         include: [
           {
@@ -20,7 +20,5 @@ export default class MatchModel {
         ],
       },
     );
-    console.log(matches);
-    return matches;
   }
 }
