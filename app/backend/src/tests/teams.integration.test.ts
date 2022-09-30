@@ -21,8 +21,13 @@ const teamsMock = [
   },
 ]
 
+const teamMock = {
+  id: 1,
+  teamName: 'Team 1',
+}
+
 describe('/teams', () => {
-  describe('Sucesso - GET', () => {
+  describe('Sucesso - GET - All', () => {
     before(() => {
       sinon.stub(Teams, 'findAll').resolves(teamsMock as Teams[]);
     });
@@ -35,6 +40,36 @@ describe('/teams', () => {
       const response = await chai.request(app).get('/teams');
       expect(response.status).to.be.equal(200);
       chai.expect(response.body).to.deep.equal(teamsMock);
+    });
+  });
+  describe('Sucesso - GET - ById', () => {
+    before(() => {
+      sinon.stub(Teams, 'findByPk').resolves(teamMock as Teams);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve retornar todas as equipes', async () => {
+      const response = await chai.request(app).get('/teams/1');
+      expect(response.status).to.be.equal(200);
+      chai.expect(response.body).to.deep.equal(teamMock);
+    });
+  });
+  describe('Falha - GET - ById - Id inválido', () => {
+    before(() => {
+      sinon.stub(Teams, 'findByPk').resolves(null);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve retornar todas as equipes', async () => {
+      const response = await chai.request(app).get('/teams/1');
+      expect(response.status).to.be.equal(500);
+      chai.expect(response.body).to.deep.equal({ message: 'Team not found' });
     });
   });
 });
