@@ -41,7 +41,7 @@ describe('/matches', () => {
     });
 
     it('Deve retornar todas as partidas', async () => {
-      const response = await chai.request(app).get('/matches').query({ inProgress: true });
+      const response = await chai.request(app).get('/matches').query({ inProgress: "true" });
       expect(response.status).to.be.equal(200);
       chai.expect(response.body).to.deep.equal(inProgressMatchesMock);
     });
@@ -57,7 +57,7 @@ describe('/matches', () => {
       });
   
       it('Deve retornar todas as partidas', async () => {
-        const response = await chai.request(app).get('/matches').query({ inProgress: false });
+        const response = await chai.request(app).get('/matches').query({ inProgress: "false" });
         expect(response.status).to.be.equal(200);
         chai.expect(response.body).to.deep.equal(notInProgressMatchesMock);
       });
