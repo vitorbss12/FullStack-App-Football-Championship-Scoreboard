@@ -5,6 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import Matches from '../database/models/Matches';
+import Teams from '../database/models/Teams';
 import User from '../database/models/User';
 import {
   matchesMock,
@@ -14,6 +15,7 @@ import {
   createMatchMockInvalid,
   createMatchMockInvalidEqualTeams,
 } from './mocks/matches.mock';
+import { teamMockOk } from './mocks/teams.mock';
 
 import { userMockOk, invalidToken } from './mocks/users.mock';
 
@@ -75,6 +77,7 @@ describe('/matches', () => {
   describe('Sucesso - POST', () => {
     before(() => {
       sinon.stub(User, 'findOne').resolves(userMockOk as User);
+      sinon.stub(Teams, 'findByPk').resolves(teamMockOk as Teams);
       sinon.stub(Matches, 'create').resolves({ id: 1, ...createMatchMockOk, inProgress: true} as Matches);
     });
 
@@ -99,15 +102,15 @@ describe('/matches', () => {
         .post('/matches')
         .set('authorization', invalidToken)
         .send(createMatchMockOk);
-      expect(response.status).to.be.equal(500);
-      chai.expect(response.body).to.deep.equal({ 'message': 'invalid token' });
+      expect(response.status).to.be.equal(401);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Token must be a valid token' });
     });
 
     it('Deve retornar um erro caso o token não esteja na requisição', async () => {
       const response = await chai.request(app)
         .post('/matches')
         .send(createMatchMockOk);
-      expect(response.status).to.be.equal(500);
+      expect(response.status).to.be.equal(401);
       chai.expect(response.body).to.deep.equal({ 'message':'Token not provided' });
     });
   });
@@ -128,13 +131,13 @@ describe('/matches', () => {
         .set('authorization', responseLogin.body.token)
         .send(createMatchMockInvalid);
       expect(response.status).to.be.equal(400);
-      chai.expect(response.body).to.deep.equal({ 'message': 'Missing required fields' });
+      chai.expect(response.body).to.deep.equal({ 'message': 'All fields must be filled' });
     });
   });
 
   describe('Falha - POST - Chave de time inválida', () => {
     before(() => {
-      sinon.stub(Matches, 'findByPk').resolves(null);
+      sinon.stub(Teams, 'findByPk').resolves(null);
       sinon.stub(User, 'findOne').resolves(userMockOk as User);
     });
 
@@ -148,7 +151,7 @@ describe('/matches', () => {
         .post('/matches')
         .set('authorization', responseLogin.body.token)
         .send(createMatchMockOk);
-      expect(response.status).to.be.equal(401);
+      expect(response.status).to.be.equal(404);
       chai.expect(response.body).to.deep.equal({ 'message': 'There is no team with such id!' });
     });
   });
