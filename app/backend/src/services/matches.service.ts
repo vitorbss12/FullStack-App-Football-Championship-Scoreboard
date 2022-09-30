@@ -8,4 +8,8 @@ export default class MatchesService {
     }
     return MatchModel.findAll();
   }
+
+  static async create(match: IMatch): Promise<IMatch> {
+    return MatchModel.create(match);
+  }
 }
