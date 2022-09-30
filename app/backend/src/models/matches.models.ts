@@ -41,4 +41,8 @@ export default class MatchModel {
       },
     );
   }
+
+  static async create(match: IMatch): Promise<IMatch> {
+    return Matches.create({ ...match, inProgress: 1 });
+  }
 }
