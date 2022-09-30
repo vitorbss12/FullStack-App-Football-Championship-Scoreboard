@@ -39,7 +39,7 @@ User.init({
   // ... Outras configs
   underscored: true,
   sequelize: db,
-  modelName: 'users',
+  tableName: 'users',
   timestamps: false,
 });
 

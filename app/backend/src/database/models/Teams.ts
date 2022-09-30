@@ -19,13 +19,12 @@ Teams.init({
   teamName: {
     type: STRING,
     allowNull: false,
-    field: 'team_name',
   },
 }, {
   // ... Outras configs
   underscored: true,
   sequelize: db,
-  modelName: 'teams',
+  tableName: 'teams',
   timestamps: false,
 });
 
