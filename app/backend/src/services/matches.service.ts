@@ -9,7 +9,15 @@ export default class MatchesService {
     return MatchModel.findAll();
   }
 
+  static async findByPk(id: number): Promise<IMatch | null> {
+    return MatchModel.findByPk(id);
+  }
+
   static async create(match: IMatch): Promise<IMatch> {
     return MatchModel.create(match);
+  }
+
+  static async update(id: number): Promise<[number, IMatch[]]> {
+    return MatchModel.updateProgress(id);
   }
 }

@@ -42,7 +42,15 @@ export default class MatchModel {
     );
   }
 
+  static async findByPk(id: number): Promise<IMatch | null> {
+    return Matches.findByPk(id);
+  }
+
   static async create(match: IMatch): Promise<IMatch> {
     return Matches.create({ ...match, inProgress: 1 });
+  }
+
+  static async updateProgress(id: number): Promise<[number, IMatch[]]> {
+    return Matches.update({ inProgress: 0 }, { where: { id } });
   }
 }

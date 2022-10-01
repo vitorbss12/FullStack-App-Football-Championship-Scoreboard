@@ -25,9 +25,9 @@ export default class createMatchValidation {
     _res: Response,
     next: NextFunction,
   ) => {
-    const { homeTeam, awayTeam } = req.body;
+    const match = req.body;
 
-    if (homeTeam === awayTeam) {
+    if (match.homeTeam === match.awayTeam) {
       throw new HttpException(401, 'It is not possible to create a match with two equal teams');
     }
 
