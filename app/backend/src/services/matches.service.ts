@@ -17,7 +17,15 @@ export default class MatchesService {
     return MatchModel.create(match);
   }
 
-  static async update(id: number): Promise<[number, IMatch[]]> {
+  static async update(
+    id: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<[number, IMatch[]]> {
+    return MatchModel.update(id, homeTeamGoals, awayTeamGoals);
+  }
+
+  static async updateProgress(id: number): Promise<[number, IMatch[]]> {
     return MatchModel.updateProgress(id);
   }
 }

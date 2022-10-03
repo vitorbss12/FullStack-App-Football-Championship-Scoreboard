@@ -50,6 +50,14 @@ export default class MatchModel {
     return Matches.create({ ...match, inProgress: 1 });
   }
 
+  static async update(
+    id: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<[number, IMatch[]]> {
+    return Matches.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+  }
+
   static async updateProgress(id: number): Promise<[number, IMatch[]]> {
     return Matches.update({ inProgress: 0 }, { where: { id } });
   }
