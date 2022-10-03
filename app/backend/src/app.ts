@@ -28,6 +28,7 @@ class App {
     this.app.use('/login', routes.loginRouter);
     this.app.use('/teams', routes.teamsRouter);
     this.app.use('/matches', routes.matchesRouter);
+    this.app.use('/leaderboard', routes.leaderboardsRouter);
 
     this.app.use(httpErrorMiddleware);
   }
