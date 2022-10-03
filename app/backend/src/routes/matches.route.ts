@@ -12,15 +12,21 @@ matchesRouter.get(
 matchesRouter.post(
   '/',
   jsonwebtoken.isTokenValid,
-  createMatchValidation.isCreateMatchBodyValid,
+  // createMatchValidation.isCreateMatchBodyValid,
   createMatchValidation.isTeamsEqual,
   createMatchValidation.isTeamsValid,
   MatchesController.create,
 );
 
-matchesRouter.put(
-  '/:id/finish',
+matchesRouter.patch(
+  '/:id',
+  jsonwebtoken.isTokenValid,
   MatchesController.update,
+);
+
+matchesRouter.patch(
+  '/:id/finish',
+  MatchesController.updateProgress,
 );
 
 export default matchesRouter;
