@@ -6,10 +6,31 @@ import ILeaderboard,
   INewLeaderboard,
   FinalLeaderboard,
   SortedFinalLeaderboard,
+  IHomeTeamsLeaderboard,
 }
   from '../interfaces/leaderboard.interface';
 
 export default class LeaderboardsService {
+  static calculateEfficiency(
+    teams: IHomeTeamsLeaderboard[],
+  ): IHomeTeamsLeaderboard[] {
+    const homeTeamsLeaderboard = teams.map((team) => {
+      const { totalPoints, totalGames } = team;
+      return {
+        ...team,
+        efficiency: (totalPoints && totalGames)
+          ? Number(((totalPoints / (totalGames * 3)) * 100).toFixed(2)) : 0,
+      };
+    });
+    return homeTeamsLeaderboard;
+  }
+
+  static async homeTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
+    const homeTeams = await LeaderboardsModel.homeTeamsGetAll();
+    const finalHomeTeams = LeaderboardsService.calculateEfficiency(homeTeams);
+    return finalHomeTeams;
+  }
+
   static removeDuplicates(matches: SortedFinalLeaderboard[]): SortedFinalLeaderboard[] {
     const array: SortedFinalLeaderboard[] = [];
     matches.forEach((match) => {
