@@ -39,14 +39,15 @@ FROM
   INNER JOIN
     TRYBE_FUTEBOL_CLUBE.teams as t
   ON
-    m.home_team = t.id
+    m.home_team = t.id AND m.in_progress = 0
   GROUP BY
     name
   ) as main
     ORDER BY
-    totalVictories DESC,
-        goalsBalance DESC,
-        goalsFavor DESC,
-        goalsOwn DESC;`;
+      totalPoints DESC,
+      totalVictories DESC,
+      goalsBalance DESC,
+      goalsFavor DESC,
+      goalsOwn DESC;`;
 
 export default homeTeamsQuery;
