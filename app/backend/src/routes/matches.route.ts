@@ -12,7 +12,7 @@ matchesRouter.get(
 matchesRouter.post(
   '/',
   jsonwebtoken.isTokenValid,
-  createMatchValidation.isCreateMatchBodyValid,
+  // createMatchValidation.isCreateMatchBodyValid,
   createMatchValidation.isTeamsEqual,
   createMatchValidation.isTeamsValid,
   MatchesController.create,
