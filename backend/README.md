@@ -22,6 +22,7 @@ O BackEnd conta com uma `API` desenvolvida utilizando conceitos de `Programaçã
     - [**``GET /leaderboard/home``**](#get-leaderboardhome)
     - [**``GET /leaderboard/away``**](#get-leaderboardaway)
     - [**``GET /leaderboard``**](#get-leaderboard)
+- [**Banco de Dados**](#banco-de-dados)
 - [**Instruções**](#instruções)
     - [**Instalação e Execução**](#instalação-e-execução)
 - [**Testes**](#testes)
@@ -164,6 +165,12 @@ Um dos principais objetivos foi exercer aprendizados referentes aos conceitos de
   - Retorna o ranking geral das equipes.
   <br />
 </details>
+
+# **Banco de Dados**
+
+O banco de dados utilizado foi o `MySQL` e o `Sequelize` foi utilizado como ORM. Segue abaixo o diagrama do banco de dados:
+
+![er](../images/erDiagram.png)
 
 # **Instruções**
 
