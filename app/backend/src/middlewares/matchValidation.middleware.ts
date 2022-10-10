@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import TeamsService from '../services/teams.service';
 import HttpException from '../shared/http.exception';
 import createMatchSchema from './schemas/createMach.schema';
+import updateMatchSchema from './schemas/updateMatch.schema';
 
 export default class createMatchValidation {
   static isCreateMatchBodyValid = async (
@@ -46,6 +47,22 @@ export default class createMatchValidation {
 
     if (!homeTeamFound || !awayTeamFound) {
       throw new HttpException(404, 'There is no team with such id!');
+    }
+
+    return next();
+  };
+
+  static isUpdateMatchBodyValid = async (
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ) => {
+    const match = req.body;
+    const { error } = updateMatchSchema.validate({ ...match });
+
+    if (error) {
+      const [errorCode, errorMessage] = error.details[0].message.split('|');
+      throw new HttpException(Number(errorCode), errorMessage);
     }
 
     return next();
