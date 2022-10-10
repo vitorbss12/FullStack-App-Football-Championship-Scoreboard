@@ -9,8 +9,7 @@ export default class LeaderboardsService {
       const { totalPoints, totalGames } = team;
       return {
         ...team,
-        efficiency: (totalPoints && totalGames)
-          ? Number(((totalPoints / (totalGames * 3)) * 100).toFixed(2)) : 0,
+        efficiency: Number(((totalPoints / (totalGames * 3)) * 100).toFixed(2)),
       };
     });
     return homeTeamsLeaderboard;
