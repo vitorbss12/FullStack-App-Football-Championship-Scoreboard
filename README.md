@@ -1,14 +1,14 @@
 # Simulador de um Placar de Campeonato de Futebol
 
 Este projeto é uma aplicação FullStack que simula o placar de um campeonato de futebol. O projeto conta com duas aplicações, uma para o Frontend e outra para o Backend.
-Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de Programação Orientada a Objetos, SOLID, TDD e Arquitetura MSC (Model, Service e Controller). 
+Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de `Programação Orientada a Objetos`, `SOLID`, `TDD` e `Arquitetura MSC` (Model, Service e Controller). 
 
 ## [**Backend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/backend)
-O backend foi desenvolvido utilizando principalmente Node.js, TypeScript, Express e Sequelize. A API conta com as seguintes funcionalidades:
+O backend foi desenvolvido utilizando principalmente `Node.js`, `TypeScript`, `Express` e `Sequelize` e `MySLQ`. A API conta com as seguintes funcionalidades:
   - Endpoints para Login
     - É possível realizar o login de usuários com o perfil de administrador e de usuários comuns.
-    - A senha é criptografada utilizando o algoritmo bcrypt.
-    - A autenticação é feita utilizando o JWT.
+    - A senha é criptografada utilizando o algoritmo `bcrypt`.
+    - A autenticação é feita utilizando o `JWT`.
   - Endpoints para Times
     - É possível acessar todos os times cadastrados no banco de dados.
     - Acesso a times por id.
@@ -19,10 +19,10 @@ O backend foi desenvolvido utilizando principalmente Node.js, TypeScript, Expres
       - Partidas finalizadas
     - Cadastrar partidas no banco de dados.
       - Apenas usuários com o perfil de administrador podem cadastrar partidas.
-      - Possui validação para não permitir que partidas sejam cadastradas com times repetidos, informações inválidas ou token JWt inválido.
+      - Possui validação para não permitir que partidas sejam cadastradas com times repetidos, informações inválidas utilizando `joi` ou token `JWT` inválido.
     - Editar partidas no banco de dados.
       - Apenas usuários com o perfil de administrador podem cadastrar partidas.
-      - Possui validações para não permitir que partidas sejam editadas com informações inválidas ou token JWt inválido.
+      - Possui validações com `joi` para não permitir que partidas sejam editadas com informações inválidas ou token `JWT` inválido.
   - Endpoints para o placar do campeonato
     - Acesso ao placar do campeonato.
     - Acesso ao placar do campeonato filtrado por:
@@ -33,7 +33,7 @@ O backend foi desenvolvido utilizando principalmente Node.js, TypeScript, Expres
 **Para mais informações sobre o backend, acesse o [README](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/blob/main/backend/README.md).**
 
 ## [**Frontend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/frontend)
-O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foi necessário apenas a implementação de algumas funcionalidades. A aplicação foi desenvolvida utilizando React, nela é possível consumir a API desenvolvida no backend pela url http://localhost:3001 através dos endpoints desenvolvidos no backend. A aplicação conta com as seguintes funcionalidades:
+O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foram realizadas poucas refatorações. A aplicação foi desenvolvida utilizando `React`, nela é possível consumir a API desenvolvida no backend pela url `http://localhost:3001` através dos endpoints desenvolvidos no backend. A aplicação conta com as seguintes funcionalidades:
   - Visualizar o placar do campeonato, podendo filtrar por:
     - Por times da casa
     - Por times visitantes
