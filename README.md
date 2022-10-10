@@ -4,7 +4,7 @@ Este projeto é uma aplicação FullStack que simula o placar de um campeonato d
 Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de Programação Orientada a Objetos, SOLID, TDD e Arquitetura MSC (Model, Service e Controller). 
 
 ## [**Backend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/backend)
-O backend foi desenvolvido utilizando Node.js, TypeScript, Express e Sequelize. A API conta com as seguintes funcionalidades:
+O backend foi desenvolvido utilizando principalmente Node.js, TypeScript, Express e Sequelize. A API conta com as seguintes funcionalidades:
   - Endpoints para Login
     - É possível realizar o login de usuários com o perfil de administrador e de usuários comuns.
     - A senha é criptografada utilizando o algoritmo bcrypt.
