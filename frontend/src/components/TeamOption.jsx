@@ -21,7 +21,7 @@ const TeamOption = ({ teams, homeTeam, getTeam, testId }) => (
 );
 
 TeamOption.propTypes = {
-  teams: PropTypes.arrayOf(PropTypes.object).isRequired,
+  teams: PropTypes.arrayOf(PropTypes.shape).isRequired,
   homeTeam: PropTypes.bool.isRequired,
   getTeam: PropTypes.func.isRequired,
   testId: PropTypes.string.isRequired,
