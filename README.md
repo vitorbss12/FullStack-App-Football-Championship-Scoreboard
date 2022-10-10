@@ -131,7 +131,7 @@ npm compose:up:dev
 npm compose:down:dev
 ````
 
-**3) Logs**
+**3) Exibir Logs**
 ````
 npm run logs
 ````
