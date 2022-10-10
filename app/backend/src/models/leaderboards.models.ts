@@ -5,7 +5,7 @@ import homeTeamsQuery from './query/homeTeams';
 import awayTeamsQuery from './query/awayTeams';
 import fullTeamsQuery from './query/fullTeams';
 
-const sequelize = new Sequelize(config);
+export const sequelize = new Sequelize(config);
 
 export default class LeaderboardsModel {
   static async homeTeamsGetAll(): Promise<ILeaderboard[]> {
