@@ -11,6 +11,9 @@ import {
   matchesMock,
   notInProgressMatchesMock,
   inProgressMatchesMock,
+  matchByIdMock,
+  updateMatchMock,
+  updateMatchMockInvalid,
   createMatchMockOk,
   createMatchMockInvalid,
   createMatchMockInvalidEqualTeams,
@@ -173,6 +176,123 @@ describe('/matches', () => {
         .send(createMatchMockInvalidEqualTeams);
       expect(response.status).to.be.equal(401);
       chai.expect(response.body).to.deep.equal({ 'message': 'It is not possible to create a match with two equal teams' });
+    });
+  });
+
+  describe('Sucesso - PATCH - Atualizar gols', () => {
+    before(() => {
+      sinon.stub(User, 'findOne').resolves(userMockOk as User);
+      sinon.stub(Matches, 'findByPk').resolves(matchByIdMock as unknown as Matches);
+      sinon.stub(Matches, 'update').resolves([1, [matchByIdMock as unknown as Matches]]);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve ser possível atualizar os gols de uma partida com sucesso', async () => {
+      const responseLogin = await chai.request(app).post('/login').send({ email: userMockOk.email, password: 'secret_user' });
+      const response = await chai.request(app)
+        .patch(`/matches/${matchByIdMock.id}`)
+        .set('authorization', responseLogin.body.token)
+        .send(updateMatchMock);
+      expect(response.status).to.be.equal(200);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Match updated' });
+    });
+  });
+
+  describe('Falha - PATCH - id de partida inexistente', () => {
+    before(() => {
+      sinon.stub(User, 'findOne').resolves(userMockOk as User);
+      sinon.stub(Matches, 'findByPk').resolves(null);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve ser possível atualizar os gols de uma partida com sucesso', async () => {
+      const responseLogin = await chai.request(app).post('/login').send({ email: userMockOk.email, password: 'secret_user' });
+      const response = await chai.request(app)
+        .patch('/matches/100')
+        .set('authorization', responseLogin.body.token)
+        .send(updateMatchMock);
+      expect(response.status).to.be.equal(404);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Match not found' });
+    });
+  });
+
+  describe('Falha - PATCH - Token incorreto ou não informado', () => {
+    it('Deve retornar um erro caso o token seja inválido', async () => {
+      const response = await chai.request(app)
+        .patch(`/matches/${matchByIdMock.id}`)
+        .set('authorization', invalidToken)
+        .send(createMatchMockOk);
+      expect(response.status).to.be.equal(401);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Token must be a valid token' });
+    });
+
+    it('Deve retornar um erro caso o token não esteja na requisição', async () => {
+      const response = await chai.request(app)
+        .patch(`/matches/${matchByIdMock.id}`)
+        .send(createMatchMockOk);
+      expect(response.status).to.be.equal(401);
+      chai.expect(response.body).to.deep.equal({ 'message':'Token not provided' });
+    });
+  });
+
+  describe('Falha - PATCH - Dados da requisição inválidos', () => {
+    before(() => {
+      sinon.stub(User, 'findOne').resolves(userMockOk as User);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Não é possível cadastrar faltando algum valor no corpo', async () => {
+      const responseLogin = await chai.request(app).post('/login').send({ email: userMockOk.email, password: 'secret_user' });
+      const response = await chai.request(app)
+        .patch(`/matches/${matchByIdMock.id}`)
+        .set('authorization', responseLogin.body.token)
+        .send(updateMatchMockInvalid);
+      expect(response.status).to.be.equal(400);
+      chai.expect(response.body).to.deep.equal({ 'message': 'All fields must be filled' });
+    });
+  });
+
+  describe('Sucesso - PATCH - Atualizar estado da partida para terminada', () => {
+    before(() => {
+      sinon.stub(Matches, 'findByPk').resolves(matchByIdMock as unknown as Matches);
+      sinon.stub(Matches, 'update').resolves([1, [matchByIdMock as unknown as Matches]]);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve ser possível atualizar os gols de uma partida com sucesso', async () => {
+      const response = await chai.request(app)
+        .patch(`/matches/${matchByIdMock.id}/finish`)
+      expect(response.status).to.be.equal(200);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Finished' });
+    });
+  });
+
+  describe('Falha - PATCH - id de partida inexistente', () => {
+    before(() => {
+      sinon.stub(Matches, 'findByPk').resolves(null);
+    });
+
+    after(() => {
+      sinon.restore();
+    });
+
+    it('Deve ser possível atualizar os gols de uma partida com sucesso', async () => {
+      const response = await chai.request(app)
+        .patch('/matches/100/finish')
+      expect(response.status).to.be.equal(404);
+      chai.expect(response.body).to.deep.equal({ 'message': 'Match not found' });
     });
   });
 });

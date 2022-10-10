@@ -60,6 +60,24 @@ export const inProgressMatchesMock = [
   }
 ]
 
+export const matchByIdMock = {
+  id: 42,
+  homeTeam: 6,
+  homeTeamGoals: 1,
+  awayTeam: 1,
+  awayTeamGoals: 0,
+  inProgress: true
+}
+
+export const updateMatchMock = {
+  homeTeamGoals: 2,
+  awayTeamGoals: 2
+}
+
+export const updateMatchMockInvalid = {
+  homeTeamGoals: 2,
+}
+
 export const notInProgressMatchesMock = [
   {
     id: 1,
