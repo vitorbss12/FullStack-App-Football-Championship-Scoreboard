@@ -30,7 +30,7 @@ O backend foi desenvolvido utilizando Node.js, TypeScript, Express e Sequelize. 
       - Times visitantes
       - Pontuação total por time
 
-**Para mais informações sobre o backend, acesse o [README]().**
+**Para mais informações sobre o backend, acesse o [README](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/blob/main/backend/README.md).**
 
 ## [**Frontend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/frontend)
 O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foi necessário apenas a implementação de algumas funcionalidades. A aplicação foi desenvolvida utilizando React, nela é possível consumir a API desenvolvida no backend pela url http://localhost:3001 através dos endpoints desenvolvidos no backend. A aplicação conta com as seguintes funcionalidades:
@@ -50,7 +50,7 @@ O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foi n
     - É possível informar o time da casa, o time visitante e o placar da partida.
     - Apenas usuários com o perfil de administrador podem editar partidas do campeonato.
   
-**Para mais informações sobre o frontend, acesse o [README]().**
+**Para mais informações sobre o frontend, acesse o [README](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/blob/main/frontend/README.md).**
 
 ## Conteúdo
 
