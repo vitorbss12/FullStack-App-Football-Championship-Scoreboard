@@ -12,8 +12,8 @@ export default class LeaderboardsController {
     return res.status(200).json(awayTeams);
   }
 
-  static async findAll(_req: Request, res: Response) {
-    const leaderboards = await LeaderboardsService.getTeamsInfo();
-    res.status(200).json(leaderboards);
+  static async fullTeamsGetAll(_req: Request, res: Response) {
+    const fullTeams = await LeaderboardsService.fullTeamsGetAll();
+    return res.status(200).json(fullTeams);
   }
 }
