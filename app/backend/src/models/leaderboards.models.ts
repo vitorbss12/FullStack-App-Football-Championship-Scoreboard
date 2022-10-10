@@ -4,6 +4,7 @@ import Teams from '../database/models/Teams';
 import Matches from '../database/models/Matches';
 import { IHomeTeamsLeaderboard } from '../interfaces/leaderboard.interface';
 import homeTeamsQuery from './query/homeTeams';
+import awayTeamsQuery from './query/awayTeams';
 
 const sequelize = new Sequelize(config);
 
@@ -11,6 +12,15 @@ export default class LeaderboardsModel {
   static async homeTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
     return sequelize.query(
       homeTeamsQuery,
+      {
+        type: QueryTypes.SELECT,
+      },
+    );
+  }
+
+  static async awayTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
+    return sequelize.query(
+      awayTeamsQuery,
       {
         type: QueryTypes.SELECT,
       },
