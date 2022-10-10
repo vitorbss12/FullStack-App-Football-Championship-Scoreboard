@@ -1,15 +1,14 @@
 import { Sequelize, QueryTypes } from 'sequelize';
 import * as config from '../database/config/database';
-import Teams from '../database/models/Teams';
-import Matches from '../database/models/Matches';
-import { IHomeTeamsLeaderboard } from '../interfaces/leaderboard.interface';
+import ILeaderboard from '../interfaces/leaderboard.interface';
 import homeTeamsQuery from './query/homeTeams';
 import awayTeamsQuery from './query/awayTeams';
+import fullTeamsQuery from './query/fullTeams';
 
 const sequelize = new Sequelize(config);
 
 export default class LeaderboardsModel {
-  static async homeTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
+  static async homeTeamsGetAll(): Promise<ILeaderboard[]> {
     return sequelize.query(
       homeTeamsQuery,
       {
@@ -18,7 +17,7 @@ export default class LeaderboardsModel {
     );
   }
 
-  static async awayTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
+  static async awayTeamsGetAll(): Promise<ILeaderboard[]> {
     return sequelize.query(
       awayTeamsQuery,
       {
@@ -27,27 +26,12 @@ export default class LeaderboardsModel {
     );
   }
 
-  static async findAll(): Promise<Matches[]> {
-    return Matches.findAll(
+  static async fullTeamsGetAll(): Promise<ILeaderboard[]> {
+    return sequelize.query(
+      fullTeamsQuery,
       {
-        where: { inProgress: false },
-        attributes: ['homeTeamGoals', 'awayTeamGoals'],
-        include: [
-          {
-            model: Teams,
-            as: 'teamHome',
-            attributes: ['teamName'],
-          },
-          {
-            model: Teams,
-            as: 'teamAway',
-            attributes: ['teamName'],
-          },
-        ],
+        type: QueryTypes.SELECT,
       },
     );
   }
 }
-
-// const { QueryTypes } = require('sequelize');
-// const users = await sequelize.query("SELECT * FROM `users`", { type: QueryTypes.SELECT });
