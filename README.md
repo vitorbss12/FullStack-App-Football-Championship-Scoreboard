@@ -3,27 +3,7 @@
 Este projeto é uma aplicação FullStack que simula o placar de um campeonato de futebol. O projeto conta com duas aplicações, uma para o Frontend e outra para o Backend.
 Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de Programação Orientada a Objetos, SOLID, TDD e Arquitetura MSC (Model, Service e Controller). 
 
-## [Frontend](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/frontend)
-O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foi necessário apenas a implementação de algumas funcionalidades. A aplicação foi desenvolvida utilizando React, nela é possível consumir a API desenvolvida no backend pela url http://localhost:3001 através dos endpoints desenvolvidos no backend. A aplicação conta com as seguintes funcionalidades:
-  - Visualizar o placar do campeonato, podendo filtrar por:
-    - Por times da casa
-    - Por times visitantes
-    - Pontuação total	por time
-  - Visualizar Partidas do campeonato, podendo filtrar por:
-    - Todas
-    - Partidas em andamento
-    - Partidas finalizadas
-  - Login e Logout de usuários
-  - Adicionar Partidas ao campeonato
-    - É necessário informar o time da casa, o time visitante e o placar da partida.
-    - Apenas usuários com o perfil de administrador podem adicionar partidas ao campeonato.
-  - Editar Partidas do campeonato
-    - É possível informar o time da casa, o time visitante e o placar da partida.
-    - Apenas usuários com o perfil de administrador podem editar partidas do campeonato.
-  
-**Para mais informações sobre o frontend, acesse o [README]().**
-
-## [Backend](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/backend)
+## [**Backend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/backend)
 O backend foi desenvolvido utilizando Node.js, TypeScript, Express e Sequelize. A API conta com as seguintes funcionalidades:
   - Endpoints para Login
     - É possível realizar o login de usuários com o perfil de administrador e de usuários comuns.
@@ -52,11 +32,31 @@ O backend foi desenvolvido utilizando Node.js, TypeScript, Express e Sequelize. 
 
 **Para mais informações sobre o backend, acesse o [README]().**
 
+## [**Frontend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/frontend)
+O front end foi uma aplicação inicialmente disponibilizada pela Trybe, e foi necessário apenas a implementação de algumas funcionalidades. A aplicação foi desenvolvida utilizando React, nela é possível consumir a API desenvolvida no backend pela url http://localhost:3001 através dos endpoints desenvolvidos no backend. A aplicação conta com as seguintes funcionalidades:
+  - Visualizar o placar do campeonato, podendo filtrar por:
+    - Por times da casa
+    - Por times visitantes
+    - Pontuação total	por time
+  - Visualizar Partidas do campeonato, podendo filtrar por:
+    - Todas
+    - Partidas em andamento
+    - Partidas finalizadas
+  - Login e Logout de usuários
+  - Adicionar Partidas ao campeonato
+    - É necessário informar o time da casa, o time visitante e o placar da partida.
+    - Apenas usuários com o perfil de administrador podem adicionar partidas ao campeonato.
+  - Editar Partidas do campeonato
+    - É possível informar o time da casa, o time visitante e o placar da partida.
+    - Apenas usuários com o perfil de administrador podem editar partidas do campeonato.
+  
+**Para mais informações sobre o frontend, acesse o [README]().**
+
 ## Conteúdo
 
 - [Simulador de um Placar de Campeonato de Futebol](#simulador-de-um-placar-de-campeonato-de-futebol)
-  - [Frontend](#frontend)
-  - [Backend](#backend)
+  - [**Backend**](#backend)
+  - [**Frontend**](#frontend)
   - [Conteúdo](#conteúdo)
 - [**Estrutura da Aplicação**](#estrutura-da-aplicação)
 - [**Instruções**](#instruções)
