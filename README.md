@@ -1,7 +1,7 @@
 # Simulador de um Placar de Campeonato de Futebol
 
 Este projeto é uma aplicação FullStack que simula o placar de um campeonato de futebol. O projeto conta com duas aplicações, uma para o Frontend e outra para o Backend.
-Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de `Programação Orientada a Objetos`, `SOLID`, `TDD` e `Arquitetura MSC` (Model, Service e Controller). 
+Teve como objetivo principal o desenvolvimento da API no backend, desde a configuração do ambiente, até a implementação das regras de negócio. Foi desenvolvido utilizando conceitos de `Programação Orientada a Objetos`, `REST`, `SOLID`, `TDD` e `Arquitetura MSC` (Model, Service e Controller). 
 
 ## [**Backend**](https://github.com/vitorbss12/FullStack-App-Football-Championship-Scoreboard/tree/main/backend)
 O backend foi desenvolvido utilizando principalmente `Node.js`, `TypeScript`, `Express` e `Sequelize` e `MySLQ`. A API conta com as seguintes funcionalidades:
