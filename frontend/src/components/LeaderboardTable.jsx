@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 import { requestData } from '../services/requests';
 import Loading from './Loading';
-import { v4 as uuidv4 } from 'uuid';
 import '../styles/components/leaderboardTable.css';
 
 const LeaderboardTable = ({ currentFilter }) => {

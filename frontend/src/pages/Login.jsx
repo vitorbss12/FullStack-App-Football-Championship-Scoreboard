@@ -23,8 +23,8 @@ const Login = () => {
 
       const { role } = await requestData('/login/validate', { email, password });
 
-      localStorage.setItem('token',  token);
-      localStorage.setItem('role',  role);
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
 
       setIsLogged(true);
     } catch (error) {
