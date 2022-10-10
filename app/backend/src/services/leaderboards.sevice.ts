@@ -31,6 +31,12 @@ export default class LeaderboardsService {
     return finalHomeTeams;
   }
 
+  static async awayTeamsGetAll(): Promise<IHomeTeamsLeaderboard[]> {
+    const awayTeams = await LeaderboardsModel.awayTeamsGetAll();
+    const finalAwayTeams = LeaderboardsService.calculateEfficiency(awayTeams);
+    return finalAwayTeams;
+  }
+
   static removeDuplicates(matches: SortedFinalLeaderboard[]): SortedFinalLeaderboard[] {
     const array: SortedFinalLeaderboard[] = [];
     matches.forEach((match) => {
