@@ -1,23 +1,21 @@
 {
-  "name": "tfc-backend",
+  "name": "backend-football-championship-scoreboard",
   "version": "1.0.0",
   "description": "",
   "main": "./build/server",
   "scripts": {
-    "build": "/bin/sh tsc_eval.sh",
-    "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
+    "build": "npx -y tsc",
+    "test": "mocha -r ts-node/register ./src/tests/**/*.{test,spec}.ts -t 10000 --exit",
     "test:coverage": "nyc npm run test",
-    "test:coverage:json": "nyc --reporter=json-summary npm run test",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "prestart": "npm run build && npm run db:reset",
     "start": "node .",
     "predev": "npm run build && npm run db:reset",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
-    "postinstall": "if [ ! -z 'cat ./packages.npm' ]; then npm i --ignore-scripts $(cat ./packages.npm); fi",
     "lint": "eslint ./src --ext .ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vitor Bastos",
   "license": "ISC",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
@@ -56,7 +54,9 @@
     "cors": "2.8.5",
     "dotenv": "10.0.0",
     "express": "4.17.1",
-    "jest": "27.4.3",
+    "express-async-errors": "^3.1.1",
+    "fullstack-app-football-championship-scoreboard": "file:..",
+    "joi": "^17.6.2",
     "jsonwebtoken": "8.5.1",
     "mysql2": "2.3.3",
     "sequelize": "6.9.0"
